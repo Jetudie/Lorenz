@@ -17,8 +17,8 @@ int main(int argc, char* argv[])
         a[1] = m->x2m;
         a[2] = m->x3m;
         s->sync(s, (void*)&a[0]);
-        //printf("%d %f %f %f\n", i, m->x1m, m->x2m, m->x3m);
-        printf("%d %f %f %f\n", i, s->e1, s->e2, s->e3);
+        printf("%d %f %f %f ", i, s->e1, s->e2, s->e3);
+        printf("%f %f %f\n", m->x1m, m->x2m, m->x3m);
         //printf("%d %f\n", i, s->s);
     }
 
