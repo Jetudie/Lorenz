@@ -2,6 +2,7 @@ CC = gcc
 CFLAGS = -g -O0
 OBJS = lorenz.o
 RM = rm
+N = 1000
 
 all: lorenz
 
@@ -13,7 +14,8 @@ lorenz: main.o lorenz.o
 
 
 .PHONY: plot clean
-plot: plot.gp log.txt
+plot: plot.gp
+	./lorenz $(N) > log.txt
 	gnuplot plot.gp
 
 clean:
