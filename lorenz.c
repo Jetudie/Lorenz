@@ -1,8 +1,13 @@
 #include <stdlib.h>
 #include "lorenz.h"
 
+/* range: 
+ *      0 < alpha < 1
+ *      |0.99 - 0.01c| < 1  
+*/
 #define common_alpha 0.5
 #define common_c 49
+
 #define master_x1m 0.1
 #define master_x2m -0.1
 #define master_x3m 0.4
@@ -11,6 +16,11 @@
 #define slave_x2s -0.5
 #define slave_x3s 0.2
 
+/**
+ * @brief Lorenz synchronization function for master
+ * @param self Lorenz master
+ * @return Init status, 0 if succeed
+ */
 static int SyncLorenzMaster(Master* self)
 {
     float x1, x2, x3;
@@ -26,6 +36,12 @@ static int SyncLorenzMaster(Master* self)
     return 0;
 }
 
+/**
+ * @brief Lorenz synchronization function for slave
+ * @param self Lorenz slave
+ * @param m Message address received from master
+ * @return Init status, 0 if succeed
+ */
 static int SyncLorenzSlave(Slave* self, void* m)
 {
     float um = *((float*)m);
@@ -48,9 +64,14 @@ static int SyncLorenzSlave(Slave* self, void* m)
 	self->x2s = x2;
 	self->x3s = x3;
     
-    return 1;
+    return 0;
 }
 
+/**
+ * @brief Initialize Lorenz master
+ * @param self Lorenz master
+ * @return Init status, -1 if failed, otherwise 0.
+ */
 int init_master(Master **self)
 {
     if (NULL == (*self = malloc(sizeof(Master)))) return -1;
@@ -67,6 +88,11 @@ int init_master(Master **self)
     return 0;
 }
 
+/**
+ * @brief Initialize Lorenz slave
+ * @param self Lorenz slave
+ * @return Init status, -1 if failed, otherwise 0.
+ */
 int init_slave(Slave **self)
 {
     if (NULL == (*self = malloc(sizeof(Slave)))) return -1;
