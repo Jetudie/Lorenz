@@ -1,0 +1,33 @@
+BasedOnStyle: Chromium
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+BinPackArguments: true
+BinPackParameters: true
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Custom
+DerivePointerAlignment: false
+IndentCaseLabels: false
+IndentWidth: 4
+Language: Cpp
+MaxEmptyLinesToKeep: 2
+PointerAlignment: Right
+SpaceAfterCStyleCast: true
+TabWidth: 4
+UseTab: Never
